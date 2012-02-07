@@ -5,3 +5,4 @@ log
 .bundle
 tmp/*
 gemfiles/*.lock
+.idea/*
