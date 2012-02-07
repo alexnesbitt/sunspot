@@ -3,7 +3,7 @@ $:.push File.expand_path("../lib", __FILE__)
 require "sunspot/version"
 
 Gem::Specification.new do |s|
-  s.name        = "sunspot"
+  s.name        = "sunspot_autocomplete_autosuggest"
   s.version     = Sunspot::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ['Mat Brown', 'Peer Allan', 'Dmitriy Dzema', 'Benjamin Krause', 'Marcel de Graaf', 'Brandon Keepers', 'Peter Berkenbosch',
