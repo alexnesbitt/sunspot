@@ -9,3 +9,7 @@ sunspot-solr.pid
 .yardoc
 docs
 *.swp
+.idea/*
+.idea/.name
+.idea/workspace.xml
+.idea/.rakeTasks
