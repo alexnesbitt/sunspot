@@ -6,3 +6,7 @@ log
 tmp/*
 gemfiles/*.lock
 .idea/*
+.idea/.name
+.idea/workspace.xml
+.idea/.rakeTasks
+

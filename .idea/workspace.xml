@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="78d59990-1596-482c-a6d6-2b6ec0254ee1" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/.name" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/.rakeTasks" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sunspot_rails/.gitignore" afterPath="$PROJECT_DIR$/sunspot_rails/.gitignore" />
     </list>
     <ignored path="sunspot.iws" />
@@ -82,7 +85,7 @@
       <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sunspot_rails/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="7" selection-start="68" selection-end="68" vertical-scroll-proportion="0.2297593">
+            <state line="12" column="26" selection-start="119" selection-end="119" vertical-scroll-proportion="0.3938731">
               <folding />
             </state>
           </provider>
@@ -655,7 +658,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sunspot_rails/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="7" selection-start="68" selection-end="68" vertical-scroll-proportion="0.2297593">
+        <state line="12" column="26" selection-start="119" selection-end="119" vertical-scroll-proportion="0.3938731">
           <folding />
         </state>
       </provider>
