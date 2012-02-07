@@ -67,6 +67,29 @@
       </analyzer>
     </fieldType>
     <!-- *** This fieldType is used by Sunspot! *** -->
+    <fieldType name="autocomplete" class="solr.TextField" positionIncrementGap="100">
+      <analyzer type="index">
+        <tokenizer class="solr.KeywordTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.EdgeNGramFilterFactory" minGramSize="1" maxGramSize="25"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.KeywordTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+      </analyzer>
+    </fieldType>
+    <!-- *** This fieldType is used by Sunspot! *** -->
+    <fieldType name="autosuggest" class="solr.TextField" positionIncrementGap="100">
+    <analyzer type="index">
+      <tokenizer class="solr.LetterTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+      <filter class="solr.EdgeNGramFilterFactory" minGramSize="1" maxGramSize="25"/>
+    </analyzer>
+    <analyzer type="query">
+      <tokenizer class="solr.LetterTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+    </analyzer>
+    <!-- *** This fieldType is used by Sunspot! *** -->
     <fieldType name="boolean" class="solr.BoolField" omitNorms="true"/>
     <!-- *** This fieldType is used by Sunspot! *** -->
     <fieldType name="date" class="solr.DateField" omitNorms="true"/>
@@ -114,6 +137,10 @@
      default: a value that should be used if no value is specified
        when adding a document.
    -->
+    <!-- *** This field is used by Sunspot! *** -->
+    <dynamicField name="*_ac" type="autocomplete" indexed="true" stored="true"/>
+    <!-- *** This field is used by Sunspot! *** -->
+    <dynamicField name="*_as" type="autosuggest" indexed="true" stored="true"/>
     <!-- *** This field is used by Sunspot! *** -->
     <field name="id" stored="true" type="string" multiValued="false" indexed="true"/>
     <!-- *** This field is used by Sunspot! *** -->
@@ -228,7 +255,7 @@
     <dynamicField name="*_etms" stored="true" termVectors="true" type="tdouble" multiValued="true" indexed="true"/>
 
     <!-- Type used to index the lat and lon components for the "location" FieldType -->
-    <dynamicField name="*_coordinate"  type="tdouble" indexed="true"  stored="false" multiValued="false"/>
+    <dynamicField name="*_coordinate" type="tdouble" indexed="true" stored="false" multiValued="false"/>
     <dynamicField name="*_p" type="location" indexed="true" stored="true" multiValued="false"/>
 
     <dynamicField name="*_ll" stored="false" type="location" multiValued="false" indexed="true"/>

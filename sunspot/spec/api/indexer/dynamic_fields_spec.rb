@@ -2,8 +2,20 @@ require File.expand_path('spec_helper', File.dirname(__FILE__))
 
 describe 'indexing dynamic fields' do
   it 'indexes string data' do
-    session.index(post(:custom_string => { :test => 'string' }))
+    session.index(post(:custom_string => {:test => 'string'}))
     connection.should have_add_with(:"custom_string:test_ss" => 'string')
+  end
+
+  # Add autocomplete and autosuggest dynamic fields
+
+  it 'indexes autocomplete data' do
+    session.index(post(:custom_autocomplete => 'autocomplete text'))
+    connection.should have_add_with(:"custom_autocomplete_ac" => 'autocomplete text')
+  end
+
+  it 'indexes autosuggest data' do
+    session.index(post(:custom_autosuggest => 'autosuggest text'))
+    connection.should have_add_with(:"custom_autosuggest_as" => 'autosuggest text')
   end
 
   it 'indexes integer data with virtual accessor' do
@@ -12,22 +24,22 @@ describe 'indexing dynamic fields' do
   end
 
   it 'indexes float data' do
-    session.index(post(:custom_fl => { :test => 1.5 }))
+    session.index(post(:custom_fl => {:test => 1.5}))
     connection.should have_add_with(:"custom_float:test_fm" => '1.5')
   end
 
   it 'indexes time data' do
-    session.index(post(:custom_time => { :test => Time.parse('2009-05-18 18:05:00 -0400') }))
+    session.index(post(:custom_time => {:test => Time.parse('2009-05-18 18:05:00 -0400')}))
     connection.should have_add_with(:"custom_time:test_d" => '2009-05-18T22:05:00Z')
   end
 
   it 'indexes boolean data' do
-    session.index(post(:custom_boolean => { :test => false }))
+    session.index(post(:custom_boolean => {:test => false}))
     connection.should have_add_with(:"custom_boolean:test_b" => 'false')
   end
 
   it 'indexes multiple values for a field' do
-    session.index(post(:custom_fl => { :test => [1.0, 2.1, 3.2] }))
+    session.index(post(:custom_fl => {:test => [1.0, 2.1, 3.2]}))
     connection.should have_add_with(:"custom_float:test_fm" => %w(1.0 2.1 3.2))
   end
 

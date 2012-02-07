@@ -14,6 +14,14 @@ class Post < SuperClass
     @custom_string ||= {}
   end
 
+  def custom_autocomplete
+    @custom_autocomplete ||= {}
+  end
+
+  def custom_autosuggest
+    @custom_autosuggest ||= {}
+  end
+
   def custom_fl
     @custom_fl ||= {}
   end

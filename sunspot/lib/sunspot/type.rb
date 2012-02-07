@@ -77,8 +77,8 @@ module Sunspot
 
       def to_literal(object)
         raise(
-          ArgumentError,
-          "#{self.class.name} cannot be used as a Solr literal"
+            ArgumentError,
+            "#{self.class.name} cannot be used as a Solr literal"
         )
       end
     end
@@ -112,6 +112,38 @@ module Sunspot
       end
     end
 
+    # Insert autocomplete and autosuggest types
+    # Autocompletion type. Fields that are indexed using this type can be queried for autocompletion later
+    # Autocompletion is querying for "q*"
+    class AutocompleteType < AbstractType
+      def indexed_name(name) #:nodoc:
+        "#{name}_ac"
+      end
+
+      def to_indexed(value) #:nodoc:
+        value.to_s if value
+      end
+
+      def cast(string) #:nodoc:
+        string
+      end
+    end
+
+    # Autosuggestion type. Fields that are indexed using this type can be queried for autosuggestion later
+    # Autosuggestion is querying for "* q*"
+    class AutosuggestType < AbstractType
+      def indexed_name(name) #:nodoc:
+        "#{name}_as"
+      end
+
+      def to_indexed(value) #:nodoc:
+        value.to_s if value
+      end
+
+      def cast(string) #:nodoc:
+        string
+      end
+    end
     # 
     # The String type represents string data.
     #
@@ -249,13 +281,13 @@ module Sunspot
     class DateType < TimeType
       def to_indexed(value) #:nodoc:
         if value
-          time = 
-            if %w(year mon mday).all? { |method| value.respond_to?(method) }
-              Time.utc(value.year, value.mon, value.mday)
-            else
-              date = Date.parse(value.to_s)
-              Time.utc(date.year, date.mon, date.mday)
-            end
+          time =
+              if %w(year mon mday).all? { |method| value.respond_to?(method) }
+                Time.utc(value.year, value.mon, value.mday)
+              else
+                date = Date.parse(value.to_s)
+                Time.utc(date.year, date.mon, date.mday)
+              end
           super(time)
         end
       end
@@ -315,12 +347,12 @@ module Sunspot
 
       def cast(string) #:nodoc:
         case string
-        when 'true'
-          true
-        when 'false'
-          false
-        when true, false
-          string
+          when 'true'
+            true
+          when 'false'
+            false
+          when true, false
+            string
         end
       end
     end
