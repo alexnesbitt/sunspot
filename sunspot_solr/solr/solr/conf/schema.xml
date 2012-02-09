@@ -141,7 +141,7 @@
     <!-- *** This field is used by Sunspot! *** -->
     <dynamicField name="*_ac" type="autocomplete" indexed="true" stored="true"/>
     <!-- *** This field is used by Sunspot! *** -->
-    <dynamicField name="*_as" type="autosuggest" indexed="true" stored="true"/>
+    <dynamicField name="*_asm" type="autosuggest" indexed="true"  stored="true" multiValued="true"/>
     <!-- *** This field is used by Sunspot! *** -->
     <field name="id" stored="true" type="string" multiValued="false" indexed="true"/>
     <!-- *** This field is used by Sunspot! *** -->
